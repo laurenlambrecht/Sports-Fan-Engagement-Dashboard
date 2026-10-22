@@ -2,6 +2,9 @@
 
 This project analyzes how fan engagement around sports content changes across a season using **Google Trends** as a proxy for audience interest. It explores how performance, timing, and major moments correlate with spikes in attention, surfacing insights relevant to **sports media, marketing, and digital strategy** teams.
 
+_____.
+Live Link: [FanSignal](https://laurenlambrecht.github.io/Sports-Fan-Engagement-Dashboard/fansignal/)
+
 ## What this answers
 - How does audience interest fluctuate over time?
 - Which teams/players/topics drive the biggest spikes?
