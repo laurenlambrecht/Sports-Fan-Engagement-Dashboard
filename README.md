@@ -1,8 +1,12 @@
 # Sports Fan Engagement Dashboard
 
-This project analyzes how fan engagement around sports content changes across a season using **Google Trends** as a proxy for audience interest. It explores how performance, timing, and major moments correlate with spikes in attention, surfacing insights relevant to **sports media, marketing, and digital strategy** teams.
+This analytic project analyzes how fan engagement around sports content changes across a season using **Google Trends** as a proxy for audience interest. It explores how performance, timing, and major moments correlate with spikes in attention, surfacing insights relevant to **sports media, marketing, and digital strategy** teams.
 
-_____.
+
+## FanSignal | B2B Product Extension
+
+Building on this initial research, I developed FanSignal, a B2B sports audience intelligence platform designed to help professional sports teams translate fan-interest data into actionable marketing decisions. The interactive prototype combines audience momentum tracking, geographic insights, competitor benchmarking, and campaign recommendations to help teams identify opportunities and develop data-driven strategies.
+
 Live Link: [FanSignal](https://laurenlambrecht.github.io/Sports-Fan-Engagement-Dashboard/fansignal/)
 
 ## What this answers
