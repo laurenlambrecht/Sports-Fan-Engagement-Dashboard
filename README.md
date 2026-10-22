@@ -22,3 +22,14 @@ This project analyzes how fan engagement around sports content changes across a 
 ```bash
 pip install -r requirements.txt
 jupyter notebook
+
+
+---
+
+## FanSignal — new product layer (prototype)
+
+**[Explore FanSignal](fansignal/index.html)** · [Product documentation](fansignal/README.md)
+
+FanSignal is an **additional audience-intelligence web application built on top of this research**, not a replacement for the original analysis. While the original project investigates *when* NFL search interest changes, FanSignal prototypes a decision-support workflow for marketers: explore team trends → classify momentum → develop testable campaign recommendations → export a decision brief.
+
+The standalone web prototype supports team comparisons and local CSV uploads. **Its built-in dataset is illustrative, not real NFL historical data.** Recommendations are transparent hypotheses rather than predicted results, and Google Trends is only a proxy for audience attention. See the [FanSignal README](fansignal/README.md) for data requirements and limitations.
