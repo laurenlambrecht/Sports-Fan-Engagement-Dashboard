@@ -46,4 +46,4 @@ el("reset").addEventListener("click",()=>{rows=demoTeams.flatMap(team=>dates.map
 el("team").addEventListener("change",()=>{if(el("team").value===el("compare").value){el("compare").value=teams().find(t=>t!==el("team").value)||el("team").value;}render();});el("compare").addEventListener("change",render);
 
 fillOptions();render();
-</script><script src="enhancements.js"></script></body></html>
+</script><script src="us-map.js"></script><script src="enhancements.js"></script></body></html>
