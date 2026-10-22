@@ -1,49 +1,61 @@
-# FanSignal — product layer (MVP)
+# FanSignal — Audience Intelligence Product Layer
 
-**FanSignal is an additional, standalone web-app layer built on top of the original Sports Fan Engagement Dashboard research.** The original Google Trends analysis, notebook, plots, and datasets remain the analytical foundation; this new interface explores how a marketer could turn interest patterns into decisions.
+This is an **additional web product prototype** layered on top of the original Sports Fan Engagement Dashboard research, not a replacement for its Google Trends analysis.
 
-## Try the prototype
+## Run locally
 
-Open `fansignal/index.html` in a web browser. It is a dependency-free static HTML/CSS/JavaScript application and requires no build step. You can also deploy this directory on a static host.
+Download branch `feature/fansignal-product-layer` as a ZIP, unzip, then double-click `fansignal/index.html` in Chrome or Safari. No installation is required. The prototype loads `enhancements.js` from the same folder.
 
-## Features
+## Test data upload
 
-- Select an NFL team and compare relative search-interest time series.
-- View the latest 0–100 index, four-observation momentum, and transparent rising/stable/cooling signal.
-- Read **hypothetical marketing actions** plus a validation checklist.
-- Upload a CSV locally (nothing is transmitted to a server).
-- Download a plain-text decision brief.
-- Restore illustrative demo data.
+1. Click **Download a sample CSV to test uploading** in the website or open [sample-data.csv](sample-data.csv).
+2. Click **Upload CSV** at the top; select `sample-data.csv`.
+3. Select Kansas City Chiefs, San Francisco 49ers, Dallas Cowboys, Miami Dolphins, or Philadelphia Eagles.
+4. Watch the chart, momentum score, suggestions, and benchmarking update.
+5. For the geographic feature, click **Upload geography CSV** and select [sample-geography.csv](sample-geography.csv).
+6. Click **Export Word document** to receive an editable `.doc` decision brief, which opens in Microsoft Word or can be imported into Google Docs or Pages.
 
-## Data contract
+The sample CSV files contain **synthetic example values, not real Google Trends measurements.**
 
-CSV must have these headings:
+### Search interest CSV format
 
 ```csv
 date,team,interest
-2025-09-01,Kansas City Chiefs,42
-2025-09-08,Kansas City Chiefs,49
-2025-09-01,San Francisco 49ers,31
-2025-09-08,San Francisco 49ers,38
+2025-09-01,Kansas City Chiefs,32
+2025-09-08,Kansas City Chiefs,36
 ```
 
-Each date must be ISO format `YYYY-MM-DD`, and each interest number must be between 0 and 100. Provide at least eight observations per team for momentum. The CSV parser is deliberately minimal and does not support commas within quoted values.
+Upload dates as `YYYY-MM-DD`, with one 0–100 value per team and date. Use eight or more observations per team for the momentum calculation. Team comparisons are valid only when query/normalization settings match.
 
-**Important:** Teams should share a consistent Google Trends query, period, geographic scope, and normalized comparison scale. Independent 0–100 downloads do not necessarily support direct cross-team comparisons. Google Trends measures *relative search interest*, not actual fandom, website engagement, demand, purchases, or revenue.
+### Geography CSV format
 
-## Logic and limitations
+```csv
+team,state,interest
+Kansas City Chiefs,MO,82
+San Francisco 49ers,CA,91
+```
 
-Momentum is computed as `mean(last 4 observations) − mean(previous 4 observations)` **in index points**:
-- Rising: >= +10 points
-- Cooling: <= -10 points
-- Stable: otherwise
+State must be a two-letter US postal code and `interest` a number from 0 to 100. Geographic interest **cannot be inferred from national time-series data**; it requires separately collected geographic data.
 
-The app does **not** claim causal attribution, predictions, geographic localization, or a live feed. Its initial built-in data is **invented solely to demonstrate the user experience**, not historical findings. Load your own appropriately sourced dataset before interpreting any specific team result.
+## Five product capabilities
 
-## Product framing
+1. **Audience momentum:** shows the last relative index, comparing averages of the latest four observations and the previous four. +10 index points = rising; -10 = cooling; otherwise stable.
+2. **Geographic insights:** a state-by-state *tile heatmap*; shows synthetic placeholders until a geography CSV is uploaded. Not a geographic boundary map.
+3. **Event context:** displays calendar moments (season opener, holiday football, playoffs) as illustrative reference points. It does not algorithmically identify causal drivers.
+4. **Campaign opportunity engine:** translates momentum into a suggested marketing experiment and validation checks. Rule-based, not predictive.
+5. **Competitor benchmarking:** ranks up to ten team search terms from the loaded data by their latest interest index. Rankings need common comparison normalization.
 
-1. **Research layer (existing project):** collect, plot, and interpret Google Trends interest.
-2. **FanSignal MVP (this folder):** make the signals explorable and translate them into explainable *testable hypotheses*.
-3. **Future integrations:** real historical trends export, sports-event overlays, data refresh pipeline, regional interest, and campaign outcome measurement.
+## What is real and what isn't
 
-This separation keeps the source analysis intact while demonstrating an end-to-end product management story: question → evidence → insight → decision hypothesis → validation.
+The original repo's Google Trends research is preserved. The expanded standalone web app currently uses **illustrative, generated team values**, not live Google Trends or verified actual historic results. No geographic data, event-causation evidence, site engagement, sales, ROI, or conversion rates are inferred. To make analyses real, export consistent terms/time/geography data from Google Trends and upload CSVs in the formats above.
+
+## Structure
+
+- `index.html`: original working single-page MVP, with expansion script loaded
+- `enhancements.js`: five new features, 32-team demo coverage and Word-compatible document export
+- `sample-data.csv`: ready-to-use demonstration search series
+- `sample-geography.csv`: ready-to-use demonstration state interest data
+
+## Next steps
+
+Replace illustrative data with verified source exports; integrate documented sporting events; add a sustainable historical data pipeline, true US state geography, a campaign test planner with saved experiments, and proper cross-browser testing. Avoid claiming these are implemented already.
